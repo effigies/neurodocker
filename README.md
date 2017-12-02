@@ -23,7 +23,7 @@ This software is still in the early stages of development. If you come across an
 Use the _Neurodocker_ Docker image:
 
 ```
-docker run --rm kaczmarj/neurodocker:v0.3.1 --help
+docker run --rm kaczmarj/neurodocker:v0.3.2 --help
 ```
 
 Note: it is not yet possible to minimize Docker containers using the _Neurodocker_ Docker image.
@@ -85,9 +85,9 @@ Valid options for each software package are the keyword arguments for the class 
 Generate Dockerfile, and print result to stdout. The result can be piped to `docker build` to build the Docker image.
 
 ```shell
-docker run --rm kaczmarj/neurodocker:v0.3.1 generate -b ubuntu:17.04 -p apt --ants version=2.2.0
+docker run --rm kaczmarj/neurodocker:v0.3.2 generate -b ubuntu:17.04 -p apt --ants version=2.2.0
 
-docker run --rm kaczmarj/neurodocker:v0.3.1 generate -b ubuntu:17.04 -p apt --ants version=2.2.0 | docker build -
+docker run --rm kaczmarj/neurodocker:v0.3.2 generate -b ubuntu:17.04 -p apt --ants version=2.2.0 | docker build -
 ```
 
 ## Generate Dockerfile (full)

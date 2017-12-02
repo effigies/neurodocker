@@ -24,10 +24,11 @@ def main():
           author_email='jakubk@mit.edu',
           license='Apache License, 2.0',
           packages=find_packages(),
-          install_requires = requirements,
+          install_requires=requirements,
           entry_points={'console_scripts':
                         ['neurodocker=neurodocker.neurodocker:main']}
           )
+
 
 if __name__ == '__main__':
     main()
