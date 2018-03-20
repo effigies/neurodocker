@@ -60,8 +60,8 @@ class Miniconda(object):
 
     def __init__(self, env_name, pkg_manager, yaml_file=None,
                  conda_install=None, pip_install=None, conda_opts=None,
-                 pip_opts=None, activate=False, miniconda_version='latest',
-                 check_urls=True):
+                 pip_opts=None, activate=False, preinstalled=False,
+                 miniconda_version='latest', check_urls=True):
         self.env_name = env_name
         self.yaml_file = yaml_file
         self.pkg_manager = pkg_manager
@@ -70,6 +70,7 @@ class Miniconda(object):
         self.conda_opts = conda_opts
         self.pip_opts = pip_opts
         self.activate = activate
+        self.preinstalled = preinstalled
         self.miniconda_version = miniconda_version
         self.check_urls = check_urls
 
@@ -88,9 +89,12 @@ class Miniconda(object):
                    "\n# Install Miniconda"
                    "\n#------------------")
         if not Miniconda.INSTALLED:
-            cmds.append(comment)
-            cmds.append(self.install_miniconda())
-            cmds.append('')
+            if not self.preinstalled:
+                cmds.append(comment)
+                cmds.append(self.install_miniconda())
+                cmds.append('')
+            else:
+                Miniconda.INSTALLED = True
 
         create = self.env_name not in Miniconda.created_envs
         _comment_base = "Create" if create else "Update"
